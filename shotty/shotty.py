@@ -52,7 +52,6 @@ def create_snapshots(project):
 
     return
 
-
 @snapshots.command('list')
 @click.option('--project', default= None,
     help="Only snapshots for project (tag Project:<name>)")
@@ -72,6 +71,8 @@ def list_snapshots(project):
                     s.progress,
                     s.start_time.strftime("%c")
                 )))
+
+                if s.state == 'completed' : break
 
     return
 
